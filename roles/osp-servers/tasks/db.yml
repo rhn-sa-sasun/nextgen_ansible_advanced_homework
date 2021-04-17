@@ -1,0 +1,34 @@
+---
+- name: Create db
+  os_server:
+    cloud: openstack
+    name: db 
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
+    security_groups: db
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta: "group=appdbs,deployment_name=QA"
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
+  register: instanceip
+
+- name: Add floating IP to db
+  os_floating_ip:
+    cloud: openstack
+    state: present
+    reuse: yes
+    server: db
+    network: ext_network
+    wait: true
+    timeout: 200
+  register: instancefloatingip
+
+
