@@ -1,6 +1,6 @@
-- hosts: localhost
-  connection: local
-  become: no
-  gather_facts: true
+- name: Adding OpenStack Servers 
+  hosts: workstation
+  become: yes
+  gather_facts: false
   roles:
    - osp-servers

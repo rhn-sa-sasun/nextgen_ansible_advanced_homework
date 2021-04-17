@@ -1,4 +1,6 @@
-- hosts: workstation
+- name: Delete OpenStack Servers if the previous Smoke test fails
+  hosts: workstation
+  gather_facts: false
   become: yes
   roles:
     - osp-instance-delete
