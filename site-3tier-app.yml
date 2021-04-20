@@ -1,5 +1,6 @@
-- hosts: workstation
-  gather_facts: true
+- name: Deploy Three Tier Applications
+  hosts: workstation
+  gather_facts: false
   roles:
   - name: osp-facts
 
@@ -9,6 +10,7 @@
 - name: setup load-balancer tier
   hosts: frontends
   become: yes
+  gather_facts: false 
   roles:
     - {name: base-config, tags: base-config}
     - {name: lb-tier, tags: [lbs, haproxy]}
