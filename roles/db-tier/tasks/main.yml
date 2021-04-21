@@ -65,4 +65,4 @@
       no_log: "{{ postgres_user_no_log_state | default(false) }}" 
 
 
- become_user: "{{ postgres_user }}"
+  become_user: "{{ postgres_user }}"
