@@ -1,2 +1,40 @@
 ---
+- name: install tomcat
+  yum:
+    name: tomcat
+    state: latest
+  tags:
+    - apps
+    - tomcat
+
+- name: enable tomcat
+  service:
+    name: tomcat
+    enabled: yes
+
+- name: create tomcat dir
+  file: 
+    path: "{{ tomcat_web_root }}"
+    state: directory
+  tags:
+    - apps
+    - tomcat
+
+- name: configure tomcat
+  template:
+    src: index.html.j2
+    dest: "{{ tomcat_web_root }}/index.html"
+  notify: restart tomcat
+  tags:
+    - apps
+    - tomcat
+    
+- name: start tomcat
+  service:
+    name: tomcat
+    state: started
+    enabled: true
+  tags:
+    - apps
+    - tomcat
 
