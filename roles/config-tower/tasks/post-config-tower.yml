@@ -1,6 +1,17 @@
 - name: Create Homework Assignment project
-  command: |
-    tower-cli project create -n "00_Homework Assignment" -d "Nextgen Ansible Advanced Homework Assignment Project"  --organization "{{org_name}}" --scm-type git   --scm-url "https://github.com/rhn-sa-sasun/nextgen_ansible_advanced_homework.git"
+#  command: |
+#    tower-cli project create -n "00_Homework Assignment" -d "Nextgen Ansible Advanced Homework Assignment Project"  --organization "{{org_name}}" --scm-type git   --scm-url "https://github.com/rhn-sa-sasun/nextgen_ansible_advanced_homework.git"
+  tower_project:
+    name: "{{ proj_name }}"
+    organization: "{{ org_name }}"
+    state: present
+    scm_type: git
+    scm_url: "{{ scm_url }}"
+    scm_update_on_launch: yes
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_username: "{{ user_name }}"
+    tower_password: "{{ password }}"
+    tower_verify_ssl: no
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
