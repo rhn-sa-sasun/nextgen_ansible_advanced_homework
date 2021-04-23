@@ -1,6 +1,5 @@
 - hosts: tag_AnsibleGroup_bastions
   remote_user: ec2-user
-  private_key: "/root/.ssh/58cfkey.pem"
   gather_facts: true
   become: true
   tasks:
