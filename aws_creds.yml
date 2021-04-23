@@ -1,6 +1,7 @@
 - hosts: tag_AnsibleGroup_bastions
   remote_user: ec2-user
-#  gather_facts: true
+  private_key_file: "/root/.ssh/58cfkey.pem"
+  gather_facts: true
   become: true
   tasks:
   - name: Install required packages 
