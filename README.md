@@ -13,6 +13,7 @@ Role Variables
 --------------
 
 [root@control 0 ~/nextgen_ansible_advanced_homework master ⭑|✚1…1]# tree
+```
 .
 ├── ansible.cfg
 ├── aws_creds.yml
@@ -191,6 +192,7 @@ Role Variables
 ├── site-setup-workstation.yml
 ├── site-smoke-osp.yml
 └── site-smoketest-aws.yml
+```
 
 Dependencies
 ------------
