@@ -21,8 +21,6 @@
       server: 'frontend'
     register: openstack_info
 
-  - debug: var=openstack_info
-  
   - name: Check if all osp instance exist
     debug: "{{ openstack_info.openstack_servers | length }}"
     register: osp_instance

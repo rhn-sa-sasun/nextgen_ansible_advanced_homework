@@ -2,13 +2,13 @@
 # Install HAProxy
 - name: install HAProxy
   yum:
-    name: haproxy 
+    name: "{{ payload }}" 
     state: latest
 
 # Enable HAProxy
 - name: enable HAProxy
   service:
-    name: haproxy
+    name: "{{ payload }}"
     enabled: yes
 
 #Configure HAProxy
@@ -17,10 +17,10 @@
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     mode: 0644
-  notify: restart haproxy
+  notify: restart "{{ payload }}"
 
 #Start HAProxy
 - name: start HAProxy
   service:
-    name: haproxy
+    name: "{{ payload }}"
     state: started

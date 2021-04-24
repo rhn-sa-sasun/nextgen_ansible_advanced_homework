@@ -11,9 +11,8 @@ AWS: ec2-user
 
 Role Variables
 --------------
-
-[root@control 0 ~/nextgen_ansible_advanced_homework master ⭑|✚1…1]# tree
 ```
+[root@control 0 ~/nextgen_ansible_advanced_homework master ⭑|✚1…1]# tree
 .
 ├── ansible.cfg
 ├── aws_creds.yml
@@ -205,6 +204,7 @@ Full instructions, please see https://www.opentlc.com/download/ansible_bootcamp/
 
 Example Playbook
 ----------------
+```
 [root@control 0 ~/nextgen_ansible_advanced_homework master ⭑|✔]# ansible-playbook grading-script.yml -vv 2>&1 | tee script-report-20210424.txt
 
 
@@ -221,7 +221,7 @@ Example Playbook
       group: workstation
       ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       ansible_ssh_user: cloud-user
-
+```
 
 Known Issues
 ------------

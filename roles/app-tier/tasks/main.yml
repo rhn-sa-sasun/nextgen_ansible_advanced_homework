@@ -1,7 +1,7 @@
 ---
 - name: install tomcat
   yum:
-    name: tomcat
+    name: "{{ payload }}"
     state: latest
   tags:
     - apps
@@ -9,7 +9,7 @@
 
 - name: enable tomcat
   service:
-    name: tomcat
+    name: "{{ payload }}"
     enabled: yes
 
 - name: create tomcat dir
@@ -31,7 +31,7 @@
     
 - name: start tomcat
   service:
-    name: tomcat
+    name: "{{ payload }}"
     state: started
     enabled: true
   tags:
