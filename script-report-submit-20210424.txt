@@ -1,0 +1,72 @@
+
+PLAY [localhost] **********************************************************************************************************************************************
+
+TASK [Create In-memory Inventory] *****************************************************************************************************************************
+changed: [localhost]
+
+PLAY [workstation] ********************************************************************************************************************************************
+
+TASK [OpenStack servers] **************************************************************************************************************************************
+ok: [workstation-8a42.dynamic.opentlc.com]
+
+TASK [Check if all osp instance exist] ************************************************************************************************************************
+ok: [workstation-8a42.dynamic.opentlc.com] => {
+    "msg": "Hello world!"
+}
+
+TASK [debug] **************************************************************************************************************************************************
+ok: [workstation-8a42.dynamic.opentlc.com] => {
+    "osp_instance": {
+        "changed": false, 
+        "failed": false, 
+        "msg": "Hello world!"
+    }
+}
+
+TASK [Access website] *****************************************************************************************************************************************
+ok: [workstation-8a42.dynamic.opentlc.com] => (item={u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'int_network': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:cb:9f:8f', u'version': 4, u'addr': u'172.16.0.229', u'OS-EXT-IPS:type': u'fixed'}, {u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:cb:9f:8f', u'version': 4, u'addr': u'192.0.2.197', u'OS-EXT-IPS:type': u'floating'}]}, u'terminated_at': None, u'image': {u'id': u'ccb55a24-eae5-4b4d-8e2c-9e2ab92a8b09'}, u'user_data': None, u'OS-EXT-SRV-ATTR:user_data': None, u'OS-EXT-STS:vm_state': u'active', u'OS-EXT-SRV-ATTR:instance_name': u'instance-0000000e', u'OS-SRV-USG:launched_at': u'2021-04-22T09:21:04.000000', u'flavor': {u'id': u'ca9d3d30-2d24-4f88-8c69-1d5c63bf4358'}, u'az': u'nova', u'id': u'6b63e4ae-0ac9-424c-8d31-1da60fbb83fd', u'cloud': u'openstack', u'scheduler_hints': None, u'instance_name': u'instance-0000000e', u'user_id': u'407c91c92264417aaec09d86164807fd', u'has_config_drive': False, u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'networks': {}, u'accessIPv4': u'192.0.2.197', u'accessIPv6': u'', u'location': {u'project': {u'id': u'4e07f423a12f437388a97a533bb9eef9', u'domain_id': None, u'name': u'admin', u'domain_name': None}, u'zone': u'nova', u'region_name': u'regionOne', u'cloud': u'openstack'}, u'power_state': 1, u'public_v4': u'192.0.2.197', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'4e07f423a12f437388a97a533bb9eef9', u'launched_at': u'2021-04-22T09:21:04.000000', u'personality': None, u'status': u'ACTIVE', u'updated': u'2021-04-23T19:52:20Z', u'hostId': u'9b2d831f7eb0f6d381a3bd32f794e44fb5d59412a9a2f847537c5fbf', u'OS-SRV-USG:terminated_at': None, u'tags': [], u'key_name': u'ansible_ssh', u'block_device_mapping': None, u'public_v6': u'', u'hypervisor_hostname': u'overcloud-novacompute-0.localdomain', u'private_v4': u'172.16.0.229', u'OS-SCH-HNT:scheduler_hints': None, u'host_id': u'9b2d831f7eb0f6d381a3bd32f794e44fb5d59412a9a2f847537c5fbf', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-EXT-SRV-ATTR:hypervisor_hostname': u'overcloud-novacompute-0.localdomain', u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'OS-EXT-SRV-ATTR:user_data': None, u'os-extended-volumes:volumes_attached': [], u'OS-EXT-STS:vm_state': u'active', u'OS-EXT-SRV-ATTR:instance_name': u'instance-0000000e', u'OS-SCH-HNT:scheduler_hints': None, u'OS-SRV-USG:launched_at': u'2021-04-22T09:21:04.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'nova'}, u'security_groups': [{u'name': u'frontend'}], u'OS-EXT-AZ:availability_zone': u'nova', u'interface_ip': u'192.0.2.197', u'OS-EXT-SRV-ATTR:hypervisor_hostname': u'overcloud-novacompute-0.localdomain', u'name': u'frontend', u'adminPass': None, u'tenant_id': u'4e07f423a12f437388a97a533bb9eef9', u'created_at': u'2021-04-22T09:20:56Z', u'created': u'2021-04-22T09:20:56Z', u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'group': u'frontends', u'deployment_name': u'QA'}, u'config_drive': u'', u'region': u'regionOne'})
+
+TASK [Fail] ***************************************************************************************************************************************************
+skipping: [workstation-8a42.dynamic.opentlc.com]
+
+PLAY [localhost] **********************************************************************************************************************************************
+
+TASK [Access website] *****************************************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] **************************************************************************************************************************************************
+ok: [localhost] => {
+    "prod_webpage": {
+        "accept_ranges": "bytes", 
+        "changed": false, 
+        "connection": "close", 
+        "content": "<!doctype html>\n\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n\n  <title>Ansible Deployed Tomcat</title>\n  <meta name=\"description\" content=\"Ansible Created Content\">\n  <meta name=\"tony.g.kay@gmail.com\" content=\"Ansible\"SitePoint\">\n\n</head>\n\n<body>\n    <h1>Ansible has done its job - Welcome to Tomcat on 18.204.53.184</h1>\n</body>\n</html>\n", 
+        "content_length": "343", 
+        "content_type": "text/html", 
+        "cookies": {}, 
+        "cookies_string": "", 
+        "date": "Sat, 24 Apr 2021 10:22:57 GMT", 
+        "elapsed": 0, 
+        "etag": "W/\"343-1619250983000\"", 
+        "failed": false, 
+        "last_modified": "Sat, 24 Apr 2021 07:56:23 GMT", 
+        "msg": "OK (343 bytes)", 
+        "redirected": false, 
+        "server": "Apache-Coyote/1.1", 
+        "status": 200, 
+        "url": "http://frontend1.58cf.example.opentlc.com"
+    }
+}
+
+TASK [Fail] ***************************************************************************************************************************************************
+skipping: [localhost]
+
+TASK [Success] ************************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "Congrats Yours HW Assignment is completed"
+}
+
+PLAY RECAP ****************************************************************************************************************************************************
+localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+workstation-8a42.dynamic.opentlc.com : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
